@@ -29,19 +29,7 @@ function fetchTasks() {
       taskList.innerHTML = "";
 
       for (let i = 0; i < tasks.length; i++) {
-        const newTask = document.createElement("li");
-        newTask.textContent = tasks[i].task;
-
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-
-        deleteButton.addEventListener("click", function () {
-          deleteTaskFromBackend(task.id, newTask);
-        });
-
-        newTask.appendChild(deleteButton);
-
-        taskList.appendChild(newTask);
+       addTaskToList[i]
       }
     });
 }
