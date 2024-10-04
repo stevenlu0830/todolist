@@ -22,7 +22,7 @@ document
 window.addEventListener("DOMContentLoaded", fetchTasks);
 
 function fetchTasks() {
-  fetch("http://localhost:3000/tasks")
+  fetch("https://todolist-qhz9.onrender.com/tasks")
     .then((response) => response.json())
     .then((tasks) => {
       const taskList = document.getElementById("taskList");
@@ -32,14 +32,14 @@ function fetchTasks() {
         const newTask = document.createElement("li");
         newTask.textContent = tasks[i].task;
 
-        // const deleteButton = document.createElement("button");
-        // deleteButton.textContent = "Delete";
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
 
-        // deleteButton.addEventListener("click", function () {
-        //   deleteTaskFromBackend(task.id, newTask);
-        // });
+        deleteButton.addEventListener("click", function () {
+          deleteTaskFromBackend(task.id, newTask);
+        });
 
-        //newTask.appendChild(deleteButton);
+        newTask.appendChild(deleteButton);
 
         taskList.appendChild(newTask);
       }
@@ -47,7 +47,7 @@ function fetchTasks() {
 }
 
 function addTaskToBackend(task) {
-  fetch("http://localhost:3000/tasks", {
+  fetch("https://todolist-qhz9.onrender.com/tasks", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -79,7 +79,7 @@ function addTaskToList(task) {
 }
 
 function deleteTaskFromBackend(taskId, taskElement) {
-  fetch(`http://localhost:3000/tasks/${taskId}`, {
+  fetch(`https://todolist-qhz9.onrender.com/tasks/${taskId}`, {
     method: "DELETE"
   }).then(() => {
     taskElement.remove();
